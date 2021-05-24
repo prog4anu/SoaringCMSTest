@@ -1,0 +1,39 @@
+<div class="success-text" *ngIf="successMessage">
+    <p>Page Edited Successfully</p>
+</div>
+
+<div class="alert error-text" *ngIf="errorMessage">
+    <p>Page already exist, please add another</p>
+</div>
+
+<div class="container col-12 mb-3 mt-3">
+    <h2 class="page-title text-center">Edit {{page?.title}} page</h2>
+    <a class="p-0" routerLink="/admin/pages">&#x2190; Go to all pages</a>
+</div>
+
+<form novalidate #f="ngForm" (ngSubmit)="editPage(f)">
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" placeholder="title" name="title" [(ngModel)]="title" #pageTitle="ngModel" minlength="3" required>
+        <div class="alert error-text" *ngIf="pageTitle.errors?.required && pageTitle.touched">
+            Title is required
+        </div>
+        <div class="alert error-text" *ngIf="pageTitle.errors?.minlength && pageTitle.touched">
+            Minimum length is 3
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Content</label>
+        <textarea name="Content" id="" cols="30" rows="10" class="form-control" placeholder="Content" [(ngModel)]="content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="">Has Sidebar</label>
+        <input type="checkbox" name="hasSidebar" [checked]="sidebar" [(ngModel)]="hasSidebar">
+    </div>
+    <input type="hidden" name="pageId" [(ngModel)]="pageId"/>
+    <input type="hidden" name="hasSidebar" [(ngModel)]="hasSidebar"/>
+    <input type="hidden" name="slug" [(ngModel)]="slug"/>
+    <div class="form-group">
+        <button class="btn btn-default" [disabled]="!f.valid">Edit Page</button>
+    </div>
+</form>

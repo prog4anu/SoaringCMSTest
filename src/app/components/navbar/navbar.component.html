@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+  <a class="navbar-brand" routerLink="/">
+    <img alt="logo" src="https://www.soaring.dev/img/SD-NEW-Logo-update.png" />
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav nav-side-bar ml-auto mt-2 mt-lg-0">
+      <ng-container *ngFor='let page of pages?.value'>
+        <li class="nav-item" *ngIf="page.slug !== 'home'">
+          <a class="nav-link" routerLink="{{page.slug}}">{{page.title}}</a>
+        </li>
+      </ng-container>
+    </ul>
+    <ul *ngIf="!userLoggedIn" class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+      <li class="nav-item"><a class="nav-link" routerLink="/register">Register</a>
+      <li>
+      <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a>
+      <li></li>
+    </ul>
+    <ul *ngIf="userLoggedIn" class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+      <li class="nav-item"><a class="nav-link" routerLink="/logout">Hi {{user}}, Logout</a>
+      <li>
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+  </div>
+</nav>
+
+

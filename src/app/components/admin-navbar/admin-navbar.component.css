@@ -1,0 +1,41 @@
+.custom-navbar{
+    border-bottom: 1px solid #ccc;
+    background: rgba(248, 3, 236, 0.79) !important;
+    width: 15%;
+    top:60%;
+    left: 0;
+    /* position: fixed; */
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.custom-navbar .navbar-brand img{
+    max-height: 60px;
+}
+
+.custom-navbar .nav-item{
+    position: relative;
+    white-space: nowrap;
+    padding: 10px 18px 10px 10px;
+    margin-left: 10px;
+    transition: .3s;
+    float: none;
+}
+
+.custom-navbar .nav-item a{
+    color:#fff !important;
+    font-weight: bold;
+}
+
+.custom-navbar .nav-link{
+    display: block;
+    position: relative;
+    color: #fff;
+    transition: .3s;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.bg-sidebar{
+    background-color:#dfe5ea;
+}
