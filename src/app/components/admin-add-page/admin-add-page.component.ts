@@ -18,6 +18,9 @@ export class AdminAddPageComponent implements OnInit {
   errorMessage:boolean=false;
   hasSidebar:boolean=false;
   title:string = "";
+  metaTitle = "";
+  description:string = "";
+  keywords:string = "";
   content:string = "";
 
   constructor(

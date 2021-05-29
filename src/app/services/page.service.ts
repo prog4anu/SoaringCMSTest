@@ -36,11 +36,6 @@ export class PageService {
   deletePage(id: any) {
     return this.http.delete(envMethods.apiUrlCall("api/pages/delete/" + id));
   }
-
-
-  uploadImage(path : any){
-    return this.http.post(envMethods.apiUrlCall("api/pages/create"), path);
-  }
   //#endregion
 
   //#region put pages

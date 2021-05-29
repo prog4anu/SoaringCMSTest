@@ -10,9 +10,26 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav nav-side-bar ml-auto mt-2 mt-lg-0">
-      <ng-container *ngFor='let page of pages?.value'>
+      <!-- <ng-container *ngFor='let page of pages?.value'>
         <li class="nav-item" *ngIf="page.slug !== 'home'">
           <a class="nav-link" routerLink="{{page.slug}}">{{page.title}}</a>
+        </li>
+      </ng-container> -->
+      <ng-container *ngFor='let menu of menus?.value'>
+        <!-- <li class="nav-item dropdown" *ngIf="menu.menuName !== 'home'">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown">{{menu.menuName}}</a>
+        </li> -->
+        <li *ngIf="menu.menuName !== 'home'">
+          <a class="nav-link dropdown-toggle font-weight-bold" routerLink="{{menu.menuName}}" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{menu.menuName | uppercase}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ng-container *ngFor='let submenu of submenus?.value'>
+              <p>{{submenu.ParentMenuId}}</p>
+              <a class="dropdown-item" *ngIf="submenu.ParentMenuId==menu.menuId" routerLink="{{ submenu.SubMenuName }}">{{ submenu.SubMenuName }}</a> 
+            </ng-container>
+          </div>
         </li>
       </ng-container>
     </ul>
@@ -32,5 +49,3 @@
       </form> -->
   </div>
 </nav>
-
-

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageService } from 'src/app/services/page.service';
 import { SidebarService } from 'src/app/services/sidebar.service';
@@ -20,6 +20,7 @@ export class PagesComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private title: Title,
+    private meta: Meta,
     private pageService: PageService,
     private sideBarService: SidebarService
   ) { }
@@ -27,18 +28,27 @@ export class PagesComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.param = params["pages"];
+      
       if (this.param === undefined) {
         this.param = "home";
-        this.title.setTitle("Soaring");
+        // this.title.setTitle("Soaring");
       }
-      else {
-        this.title.setTitle(this.param.replace(/-/g, ' ').replace(/\b\w/g, (l: any) => l.toUpperCase()));
+      if(this.param !== undefined) {
+        //this.title.setTitle(this.param.replace(/-/g, ' ').replace(/\b\w/g, (l: any) => l.toUpperCase()));
         //this.title.setTitle(this.param.replace(/-/g,' ').replace(/\b\w/g, ' '));
 
         this.pageService.getPagesSlug(this.param).subscribe((page: any) => {
           if (page == "PageNotFound") {
             this.router.navigateByUrl('');
           }
+
+          if((page.metaTitle == "" || page.metaTitle == null) && (page.title != "" || page.title != null)){
+            page.metaTitle = page.title.toUpperCase();
+          }
+
+          this.title.setTitle(page.metaTitle);
+          this.meta.updateTag({ name: 'description', content: page.description });
+          this.meta.updateTag({ name: 'keywords', content: page.keywords });
 
           this.pageBody = page.content;
 
