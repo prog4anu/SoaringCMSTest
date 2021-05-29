@@ -1,0 +1,51 @@
+<div class="success-text" *ngIf="successMessage">
+    <p>Sub Menu Added</p>
+</div>
+
+<div class="alert error-text" *ngIf="errorMessage">
+    <p>Sub Menu already exist, please add another</p>
+</div>
+
+<div class="container col-12 mb-3 mt-3">
+    <a class="p-0" routerLink="/admin/menus/{{ParentMenuId}}">&#x2190; Go to Menu</a>
+</div>
+
+<form novalidate #f="ngForm" (ngSubmit)="addSubMenu(f)">
+    <input type="hidden" name="ParentMenuId" [value]="ParentMenuId" [(ngModel)]="ParentMenuId"/>
+    <div class="col-12 row">
+        <div class="form-group col-lg-6 col-sm-12 pl-0">
+            <label for="">Sub Menu Title</label>
+            <input type="text" class="form-control" placeholder="Enter Sub Menu Name" name="SubMenuName" [(ngModel)]="SubMenuName"
+                #subMenuName="ngModel" minlength="3" required>
+            <div class="alert error-text" *ngIf="subMenuName.errors?.required && subMenuName.touched">
+                Title is required
+            </div>
+            <div class="alert error-text" *ngIf="subMenuName.errors?.minlength && subMenuName.touched">
+                Minimum length is 3
+            </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-sm-12 pr-0">
+            <label for="">Select Page</label>
+            <select class="form-control" [(ngModel)]="SubMenuPageId" #subMenuPageId="ngModel" name="SubMenuPageId">
+                <option value="">Please select page</option>
+                <ng-container *ngFor='let page of pages'>
+                    <option [ngValue]="page.pageId">{{page.slug}}</option>
+                </ng-container>
+            </select>
+            <div class="alert error-text" *ngIf="subMenuPageId.errors?.required && subMenuPageId.touched">
+                Please select page
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12 row">
+        <div class="form-group col-6">
+            <label for="">Show Sub Menu</label>
+            <input class="ml-3" type="checkbox" name="ShowSubMenu" [(ngModel)]="showSubMenu">
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-default">Add Menu</button>
+    </div>
+</form>
