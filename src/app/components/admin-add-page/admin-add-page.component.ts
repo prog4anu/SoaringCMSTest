@@ -39,7 +39,7 @@ export class AdminAddPageComponent implements OnInit {
   addPage({form,value,valid}:any){
     form.reset();    
     if(valid){
-      value.content= CKEDITOR.instance.content.getData();
+      value.content= CKEDITOR.instances.Content.getData();
       this.pageService.postAddPage(value).subscribe((res:any) => {
         if(res=="Page Already Exists"){
           this.errorMessage=true;
@@ -54,7 +54,7 @@ export class AdminAddPageComponent implements OnInit {
             this.successMessage=false;
           }, 2000);
 
-          CKEDITOR.instance.content.setData('');
+          CKEDITOR.instances.Content.setData('');
 
           this.pageService.getPages().subscribe(pages => {
             this.pageService.pageBS.next(pages);
