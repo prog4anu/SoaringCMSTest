@@ -14,6 +14,9 @@ export class AdminEditPageComponent implements OnInit {
 
   page:any;
   title: string = '';
+  metaTitle = "";
+  description:string = "";
+  keywords:string = "";
   content: string = '';
   pageId: string = '';
   successMessage: boolean = false;
@@ -38,16 +41,34 @@ export class AdminEditPageComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
       this.param = params['PageId'];
       this.pageService.getEditPage(this.param).subscribe((page: any) => {
-        console.log(page['hasSideBar']);
         this.page=page;
         this.slug = page['slug'];
         this.hasSidebar = page['hasSideBar'];
         this.title = page['title'];
         this.pageId = page['pageId'];
         this.content = page['content'];
+        this.metaTitle = page['metaTitle'];
+        this.description = page['description'];
+        this.keywords = page['keywords'];
         if(page['hasSideBar']===true){
           this.sidebar=true;
         }
+        CKEDITOR.fullPage = true;
+        CKEDITOR.allowedContent = true;
+        
+      //   CKEDITOR.replace( 'wysiwyg5', {
+      //     allowedContent: {
+      //         script: true,
+      //         div: true,
+      //         $1: {
+      //             // This will set the default set of elements
+      //             elements: CKEDITOR.dtd,
+      //             attributes: true,
+      //             styles: true,
+      //             classes: true
+      //         }
+      //     }
+      // } );
         CKEDITOR.replace('Content');
       });
     });
@@ -59,8 +80,6 @@ export class AdminEditPageComponent implements OnInit {
     if (valid) {
       value.Content= CKEDITOR.instances.Content.getData();
       this.pageService.postEditPage(value).subscribe((res: any) => {
-        console.log(res);
-
         if (res == "Page Already Exists") {
           this.errorMessage = true;
           setTimeout(() => {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,7 +14,17 @@ export class RegisterComponent implements OnInit {
   errorMessage:boolean=false;
   successMessage:boolean=false;
   username:string="";
-  password:string="";
+  confirmpassword:string="";
+  firstname:string="";
+  lastname:string="";
+  
+  Admin: string ="";
+  isAdmin: boolean = false;
+  userdata:any={
+    password:"",
+    confirmpassword:"",
+    phonenumber:""
+  };
 
   constructor(
     private router:Router,
@@ -28,7 +39,13 @@ export class RegisterComponent implements OnInit {
 
   register({value,valid}:any){
     if(valid){
-      value.IsAdmin = false;
+      if(this.Admin!="" && this.Admin=="yes"){
+        value.IsAdmin = true;
+      }
+      else{
+        value.IsAdmin = false;
+      }
+      
 
       this.userService.register(value).subscribe((res:any) =>{
         if(res=="User Already Exists"){
@@ -48,4 +65,24 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  password = new FormControl("", [
+    Validators.required,
+    Validators.pattern(
+      "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{8,255})\\S$"
+    )
+  ]);
+  confirmPassword = new FormControl("", [
+    Validators.required,
+    this.confirmEquals() 
+  ]); 
+
+  confirmEquals(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null =>  
+        control.value?.toLowerCase() === this.passwordValue.toLowerCase() 
+            ? null : {noMatch: true};
+  }
+
+  get passwordValue() {
+    return this.password.value;
+  }
 }

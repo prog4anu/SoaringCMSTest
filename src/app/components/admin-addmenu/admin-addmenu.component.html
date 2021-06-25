@@ -1,0 +1,69 @@
+<div class="success-text" *ngIf="successMessage">
+    <p>Menu Added</p>
+</div>
+
+<div class="alert error-text" *ngIf="errorMessage">
+    <p>Menu already exist, please add another</p>
+</div>
+
+<div class="container col-12 mb-3 mt-3">
+    <h2 class="page-title text-center">Add a page</h2>
+    <a class="p-0" routerLink="/admin/pages">&#x2190; Go to all pages</a>
+</div>
+
+<form novalidate #f="ngForm" (ngSubmit)="addMenu(f)">
+    <div class="col-12 row">
+        <div class="form-group col-lg-6 col-sm-12 pl-0">
+            <label for="">Menu Title</label>
+            <input type="text" class="form-control" placeholder="Enter Menu Name" name="MenuName" [(ngModel)]="MenuName"
+                #menuName="ngModel" minlength="3" required>
+            <div class="alert error-text" *ngIf="menuName.errors?.required && menuName.touched">
+                Title is required
+            </div>
+            <div class="alert error-text" *ngIf="menuName.errors?.minlength && menuName.touched">
+                Minimum length is 3
+            </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-sm-12 pr-0">
+            <label for="">Select Page</label>
+            <select class="form-control" [(ngModel)]="MenuPageId" #menuPageId="ngModel" name="MenuPageId">
+                <option value="">Please select page</option>
+                <ng-container *ngFor='let page of pages'>
+                    <option [ngValue]="page.pageId">{{page.slug}}</option>
+                </ng-container>
+            </select>
+            <div class="alert error-text" *ngIf="menuPageId.errors?.required && menuPageId.touched">
+                Please select page
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-12 row">
+        <div class="form-group col-6">
+            <label for="">Show Menu</label>
+            <input class="ml-3" type="checkbox" name="ShowMenu" [(ngModel)]="showMenu">
+        </div>
+        <div class="form-group col-6">
+            <label for="">Show Sub Menu</label>
+            <input class="ml-3" type="checkbox" name="ShowSubMenu" [(ngModel)]="showSubMenu">
+        </div>
+    </div>
+
+    <!-- <div class="row custom-checkbox">
+        <div class="form-group">
+            <input type="checkbox" name="week" id="css">
+            <label for="css">
+                <span class="checkmark">
+                    <div class="checkmark_stem"></div>
+                    <div class="checkmark_kick"></div>
+                </span>
+            </label>
+        </div>
+
+    </div> -->
+
+    <div class="form-group">
+        <button class="btn btn-default">Add Menu</button>
+    </div>
+</form>

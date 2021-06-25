@@ -13,7 +13,8 @@
 
 <form novalidate #f="ngForm" (ngSubmit)="editPage(f)">
     <div class="form-group">
-        <label for="">Title</label>
+        <label for="">Page Title</label>
+        
         <input type="text" class="form-control" placeholder="title" name="title" [(ngModel)]="title" #pageTitle="ngModel" minlength="3" required>
         <div class="alert error-text" *ngIf="pageTitle.errors?.required && pageTitle.touched">
             Title is required
@@ -23,16 +24,36 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="">Meta Description</label>
-        <input type="text" class="form-control" placeholder="title" name="title" [(ngModel)]="title" #pageTitle="ngModel" minlength="3" required>
-        <div class="alert error-text" *ngIf="pageTitle.errors?.required && pageTitle.touched">
+        <label for="">Meta Title</label>
+        <input type="text" class="form-control" placeholder="Enter the meta title" name="metatitle" [(ngModel)]="metaTitle" #pageMetaTitle="ngModel" minlength="3" required>
+        <!-- <div class="alert error-text" *ngIf="pageMetaTitle.errors?.required && pageMetaTitle.touched">
             Title is required
         </div>
-        <div class="alert error-text" *ngIf="pageTitle.errors?.minlength && pageTitle.touched">
+        <div class="alert error-text" *ngIf="pageMetaTitle.errors?.minlength && pageMetaTitle.touched">
             Minimum length is 3
-        </div>
+        </div> -->
     </div>
-    
+    <div class="form-group">
+        <label for="">Meta Description</label>
+        <input type="text" class="form-control" placeholder="Description" name="description" [(ngModel)]="description" #pageDescription="ngModel" minlength="3" required>
+        <!-- <div class="alert error-text" *ngIf="pageDescription.errors?.required && pageDescription.touched">
+            Title is required
+        </div>
+        <div class="alert error-text" *ngIf="pageDescription.errors?.minlength && pageDescription.touched">
+            Minimum length is 3
+        </div> -->
+    </div>
+
+    <div class="form-group">
+        <label for="">Meta Keywords</label>
+        <input type="text" class="form-control" placeholder="Keywords" name="keywords" [(ngModel)]="keywords" #pageKeywords="ngModel" minlength="3" required>
+        <!-- <div class="alert error-text" *ngIf="pageKeywords.errors?.required && pageKeywords.touched">
+            Title is required
+        </div>
+        <div class="alert error-text" *ngIf="pageKeywords.errors?.minlength && pageKeywords.touched">
+            Minimum length is 3
+        </div> -->
+    </div>
     <div class="form-group">
         <label for="">Content</label>
         <textarea name="Content" id="" cols="30" rows="10" class="form-control" placeholder="Content" [(ngModel)]="content"></textarea>

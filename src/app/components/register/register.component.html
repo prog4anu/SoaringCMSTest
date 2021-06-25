@@ -6,28 +6,109 @@
     <h2 class="page-title text-center">Register</h2>
 </div>
 
-<form novalidate #f="ngForm" (ngSubmit)="register(f)">
-    <div class="form-group">
-        <label for="">UserName</label>
-        <input type="text" class="form-control" placeholder="Please enter user name" name="username" [(ngModel)]="username" #userName="ngModel" minlength="3" required>
-        <div class="alert error-text" *ngIf="userName.errors?.required && userName.touched">
-            UserName is required
+<div class="container col-lg-4">
+    <form novalidate #f="ngForm" (ngSubmit)="register(f)">
+        <div class="group">
+            <input type="text" name="username" [(ngModel)]="username" #userName="ngModel" minlength="3" required>
+            <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>UserName</label>
+            <div class="alert error-text" *ngIf="userName.errors?.required && userName.touched">
+                UserName is required
+            </div>
+            <div class="alert error-text" *ngIf="userName.errors?.minlength && userName.touched">
+                Minimum length is 3
+            </div>
         </div>
-        <div class="alert error-text" *ngIf="userName.errors?.minlength && userName.touched">
-            Minimum length is 3
+        <div class="group">            
+            <!-- <input type="password" name="password" [(ngModel)]="userdata.password" #passWord="ngModel" minlength="4"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required> -->
+            <input type="password" [formControl]="password" required minlength="8">
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password</label>
+            <div class="alert error-text" *ngIf="password.errors?.required && password.touched">
+                Password is required
+            </div>
+            <div class="alert error-text" *ngIf="password.errors?.minlength && password.touched">
+                Minimum length is 8
+            </div>
+            <div *ngIf="password.dirty && password.errors?.pattern" class="alert error-text">
+                <strong>Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</strong>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="">Password</label>
-        <input type="password" class="form-control" placeholder="Please enter password" name="password" [(ngModel)]="password" #passWord="ngModel" minlength="4" required>
-        <div class="alert error-text" *ngIf="passWord.errors?.required && passWord.touched">
-            Password is required
+        <div class="group">
+            <!-- <input type="password" name="confirmpassword" [(ngModel)]="userdata.confirmpassword" #confirmpassword="ngModel" minlength="4" pattern="{{ password.value }}" required> -->
+            <input type="password"  [formControl]="confirmPassword" required minlength="8"/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Re-type Password</label>
+            <div *ngIf="confirmPassword.dirty && confirmPassword.errors?.noMatch" class="alert error-text">
+                <strong>Password</strong> and <strong>Confirm Password</strong> must be same
+            </div>
+            <div class="alert error-text" *ngIf="confirmPassword.errors?.required && confirmPassword?.touched">
+                Confirm Password is required
+            </div>
+            <div class="alert error-text" *ngIf="confirmPassword.errors?.minlength && confirmPassword?.touched">
+                Minimum length is 4
+            </div>
+            <!-- <div *ngIf="confirmpassword.errors?.required && confirmpassword.touched" class="alert error-text">
+                <div *ngIf="confirmpassword.errors?.required"> Confirm password is required. </div>
+                <div *ngIf="confirmpassword.errors?.pattern"> Password & Confirm Password does not match.</div>
+              </div> -->
         </div>
-        <div class="alert error-text" *ngIf="passWord.errors?.minlength && passWord.touched">
-            Minimum length is 4
+        <div class="group">
+            
+            <input type="text" name="firstname" [(ngModel)]="firstname" #firstName="ngModel" minlength="3" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>First Name</label>
+            <div class="alert error-text" *ngIf="firstName.errors?.required && firstName.touched">
+                First Name is required
+            </div>
+            <div class="alert error-text" *ngIf="firstName.errors?.minlength && firstName.touched">
+                Minimum length is 3
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <button class="btn btn-default" [disabled]="!f.valid">Register</button>
-    </div>
-</form>
+        <div class="group">
+            
+            <input type="text" name="lastname" [(ngModel)]="lastname" #lastName="ngModel" minlength="3" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label for="">Last Name</label>
+            <div class="alert error-text" *ngIf="lastName.errors?.required && lastName.touched">
+                Last Name is required
+            </div>
+            <div class="alert error-text" *ngIf="lastName.errors?.minlength && lastName.touched">
+                Minimum length is 3
+            </div>
+        </div>
+        <div class="group">
+            <input type="text" name="contact" [(ngModel)]="userdata.phonenumber" #phonenumber="ngModel" minlength="3" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label for="">Contact Number</label>
+            <div class="alert error-text" *ngIf="phonenumber.errors?.required && phonenumber.touched">
+                Contact Number is required
+            </div>
+            <div class="alert error-text" *ngIf="phonenumber.errors?.minlength && phonenumber.touched">
+                Minimum length is 3
+            </div>
+        </div>
+        <!-- <div class="form-group">
+            <label for="">Do you want to create a website?</label>
+            <div class="col-12">
+                <div class="row">
+                    <div class="form-group">
+                        <input type="radio" name="isAdmin" [(ngModel)]="isAdmin" #contact="ngModel" value="yes"/> Yes
+                     </div>
+                     <div>
+                         <input type="radio" name="isAdmin" [(ngModel)]="isAdmin" #contact="ngModel" value="no" checked="checked"/> No
+                     </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="form-group text-center">
+            <button class="btn btn-default btn-custom" [disabled]="!f.valid">Register</button>
+        </div>
+    </form>
+</div>
