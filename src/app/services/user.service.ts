@@ -12,10 +12,10 @@ export class UserService {
   ) { }
 
   register(user: any) {
-    return this.http.post(envMethods.apiUrlCall("api/users/register"), user);
+    return this.http.post(envMethods.apiUrlCall("users/register"), user);
   }
 
   login(user: any) {
-    return this.http.post(envMethods.apiUrlCall("api/users/login"), user);
+    return this.http.post(envMethods.apiUrlCall("users/login"), user);
   }
 }

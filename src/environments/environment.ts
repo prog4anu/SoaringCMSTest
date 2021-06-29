@@ -4,11 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://localhost:54321/'
+  apiUrl:'http://localhost:5000/'
 };
 
 export const envMethods  = {
   apiUrlCall: (url:string) =>{
+    console.log(environment.apiUrl)
     return environment.apiUrl+url;
   }
 };

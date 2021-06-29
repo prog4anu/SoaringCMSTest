@@ -34,8 +34,14 @@ export class AdminAddmenuComponent implements OnInit {
     }
 
     this.pageService.getPages().subscribe(pages => {
-      // this.pageService.pageBS.next(pages);
-      this.pages=pages;
+      this.menuService.getMenus().subscribe((menu: any) => {
+        menu.forEach((element:any) => { 
+          if(Array.isArray(pages)){
+            pages = pages.filter((item:any) => item.pageId !== element.menuPageId);
+          }                   
+        });
+        this.pages=pages;
+      });
     });
   }
 

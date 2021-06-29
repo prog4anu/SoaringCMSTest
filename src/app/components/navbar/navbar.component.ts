@@ -40,20 +40,18 @@ export class NavbarComponent implements OnInit {
 
       if (menu.length > 0) {
         menu.forEach((submenu: any) => {
-          this.menuService.getSubMenus(submenu.menuId).subscribe((submenus: any) => {
-           
+          this.menuService.getSubMenus(submenu.menuId).subscribe((submenus: any) => {           
             if (submenus.length > 0) {
-              this.submenus.push(submenus);
-              
+              this.submenus.push(submenus);              
             }
-          });
-
-          
+          });          
         }
-        );
-        
+        );        
       }
     });
   }
 
+  checkObj(obj:any){
+    console.log(obj);
+  }
 }

@@ -14,10 +14,10 @@ export class SidebarService {
 
 
   getSideBar(){
-    return this.http.get(envMethods.apiUrlCall("api/sidebar"));
+    return this.http.get(envMethods.apiUrlCall("sidebar"));
   }
 
   putSideBar(page:any){
-    return this.http.put(envMethods.apiUrlCall("api/sidebar/edit"),page);  
+    return this.http.put(envMethods.apiUrlCall("sidebar/edit"),page);  
   }
 }

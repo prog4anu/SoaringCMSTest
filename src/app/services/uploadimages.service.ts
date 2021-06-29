@@ -17,7 +17,7 @@ export class UploadimagesService {
 
   //#region post pages
   uploadImage(formData: any) {
-    return this.http.post(envMethods.apiUrlCall("api/upload/uploadlogo"), formData, { reportProgress: true, observe: 'events' });
+    return this.http.post(envMethods.apiUrlCall("upload/uploadlogo"), formData, { reportProgress: true, observe: 'events' });
   }
   //#endregion
 

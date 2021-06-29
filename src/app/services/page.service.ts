@@ -15,32 +15,32 @@ export class PageService {
 
   //#region get methods
   getPages() {
-    return this.http.get(envMethods.apiUrlCall("api/pages"));
+    return this.http.get(envMethods.apiUrlCall("pages"));
   }
 
   getPagesSlug(slug: string) {
-    return this.http.get(envMethods.apiUrlCall("api/pages/" + slug));
+    return this.http.get(envMethods.apiUrlCall("pages/" + slug));
   }
 
   getEditPage(id: any) {
-    return this.http.get(envMethods.apiUrlCall("api/pages/edit/" + id));
+    return this.http.get(envMethods.apiUrlCall("pages/edit/" + id));
   }
 
   //#endregion
 
   //#region post pages
   postAddPage(page: any) {
-    return this.http.post(envMethods.apiUrlCall("api/pages/create"), page);
+    return this.http.post(envMethods.apiUrlCall("pages/create"), page);
   }
 
   deletePage(id: any) {
-    return this.http.delete(envMethods.apiUrlCall("api/pages/delete/" + id));
+    return this.http.delete(envMethods.apiUrlCall("pages/delete/" + id));
   }
   //#endregion
 
   //#region put pages
   postEditPage(page: any) {
-    return this.http.put(envMethods.apiUrlCall("api/pages/edit/" + page.pageId), page);
+    return this.http.put(envMethods.apiUrlCall("pages/edit/" + page.pageId), page);
   }
   //#endregion
 

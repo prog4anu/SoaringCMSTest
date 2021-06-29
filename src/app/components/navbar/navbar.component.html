@@ -24,10 +24,11 @@
             aria-haspopup="true" aria-expanded="false">
             {{menu.menuName | uppercase}}
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <ng-container *ngFor='let submenu of submenus?.value'>
-              <p>{{submenu.ParentMenuId}}</p>
-              <a class="dropdown-item" *ngIf="submenu.ParentMenuId==menu.menuId" routerLink="{{ submenu.SubMenuName }}">{{ submenu.SubMenuName }}</a> 
+          <div class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+            <ng-container *ngFor='let submenuitem of submenus'>
+              <ng-container *ngFor='let submenu of submenuitem'>
+                <a class="dropdown-item" *ngIf="submenu.parentMenuId==menu.menuId" routerLink="{{ submenu.subMenuName }}">{{ submenu.subMenuName }}</a>
+              </ng-container> 
             </ng-container>
           </div>
         </li>
