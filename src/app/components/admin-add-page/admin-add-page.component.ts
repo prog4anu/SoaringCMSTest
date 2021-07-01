@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { PageService } from 'src/app/services/page.service';
 
 declare var CKEDITOR:any;
+
+declare var CKFinder:any;
 // declare var $:any;
 
 @Component({
@@ -37,6 +39,8 @@ export class AdminAddPageComponent implements OnInit {
     } else{
       CKEDITOR.replace('Content');
     }
+
+    console.log(CKFinder);
   }
 
   addPage({form,value,valid}:any){
@@ -62,6 +66,8 @@ export class AdminAddPageComponent implements OnInit {
           this.pageService.getPages().subscribe(pages => {
             this.pageService.pageBS.next(pages);
           });
+
+          
         }
       });
     }

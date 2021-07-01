@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
 
   login({value,valid}:any){
     if(valid){
-      value.IsAdmin = false;
-debugger;
+      value.IsAdmin = 0;
+
       this.userService.login(value).subscribe((res:any) =>{
         if(res=="InvalidUser"){
           this.loginFailed=true;
