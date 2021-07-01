@@ -3,7 +3,7 @@
 /* basic stylings ------------------------------------------ */
 .container    { 
   font-family:'Roboto';
-  width:600px; 
+   
   margin:30px auto 0; 
   display:block; 
   background:#FFF;
@@ -113,4 +113,9 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
   from { background:#5264AE; }
   to  { width:0; background:transparent; }
+}
+
+
+@media screen and (max-width:991px) {
+  
 }

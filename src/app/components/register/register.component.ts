@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   lastname:string="";
   
   Admin: string ="";
-  isAdmin: boolean = false;
+  isAdmin: number = 0;
   userdata:any={
     password:"",
     confirmpassword:"",
@@ -40,10 +40,10 @@ export class RegisterComponent implements OnInit {
   register({value,valid}:any){
     if(valid){
       if(this.Admin!="" && this.Admin=="yes"){
-        value.IsAdmin = true;
+        value.IsAdmin = 1;
       }
       else{
-        value.IsAdmin = false;
+        value.IsAdmin = 0;
       }
       
 

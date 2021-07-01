@@ -1,5 +1,8 @@
 <div class="row" style="margin-bottom:15px;">
-  <div class="col-md-3">
+  <div class="col-12 pt-4">
+    <h4 class="text-center">Upload Your Site Logo</h4>
+  </div>
+  <div class="col-12 text-center mt-5">
     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
     <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
   </div>

@@ -34,13 +34,13 @@
         </li>
       </ng-container>
     </ul>
-    <ul *ngIf="!userLoggedIn" class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+    <ul *ngIf="!userLoggedIn" class="navbar-nav mt-2 mt-lg-0 navbar-right">
       <li class="nav-item"><a class="nav-link" routerLink="/register">Register</a>
       <li>
       <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a>
       <li></li>
     </ul>
-    <ul *ngIf="userLoggedIn" class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+    <ul *ngIf="userLoggedIn" class="navbar-nav mt-2 mt-lg-0 navbar-right">
       <li class="nav-item"><a class="nav-link" routerLink="/logout">Hi {{user}}, Logout</a>
       <li>
     </ul>
