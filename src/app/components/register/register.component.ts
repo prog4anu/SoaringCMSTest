@@ -38,7 +38,13 @@ export class RegisterComponent implements OnInit {
   }
 
   register({value,valid}:any){
+    
     if(valid){
+    
+    if(this.password.value!=null){
+      value.password = this.password.value;
+    }
+    
       if(this.Admin!="" && this.Admin=="yes"){
         value.IsAdmin = true;
       }
@@ -84,5 +90,9 @@ export class RegisterComponent implements OnInit {
 
   get passwordValue() {
     return this.password.value;
+  }
+
+  focusOutFunction(value:any){
+    
   }
 }
