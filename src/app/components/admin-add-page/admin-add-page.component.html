@@ -57,6 +57,17 @@
     </div>
 
     <div class="form-group">
+        <label for="">Page URL</label>
+        <input type="text" class="form-control" placeholder="Page Url" name="pagelink" [(ngModel)]="pagelink" #pageLink="ngModel" minlength="3" required>
+        <!-- <div class="alert error-text" *ngIf="pageKeywords.errors?.required && pageKeywords.touched">
+            Title is required
+        </div>
+        <div class="alert error-text" *ngIf="pageKeywords.errors?.minlength && pageKeywords.touched">
+            Minimum length is 3
+        </div> -->
+    </div>
+
+    <div class="form-group">
         <label for="">Content</label>
         <textarea name="Content" id="" cols="30" rows="10" class="form-control" placeholder="Content" [(ngModel)]="content"></textarea>
     </div>

@@ -20,14 +20,14 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown">{{menu.menuName}}</a>
         </li> -->
         <li *ngIf="menu.menuName !== 'home'">
-          <a class="nav-link dropdown-toggle font-weight-bold" routerLink="{{menu.menuName}}" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle font-weight-bold" routerLink="{{menu.pageLink}}" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             {{menu.menuName | uppercase}}
           </a>
           <div class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
             <ng-container *ngFor='let submenuitem of submenus'>
               <ng-container *ngFor='let submenu of submenuitem'>
-                <a class="dropdown-item" *ngIf="submenu.parentMenuId==menu.menuId" routerLink="{{ submenu.subMenuName }}">{{ submenu.subMenuName }}</a>
+                <a class="dropdown-item" *ngIf="submenu.parentMenuId==menu.menuId" routerLink="{{ submenu.pageLink }}">{{ submenu.subMenuName }}</a>
               </ng-container> 
             </ng-container>
           </div>

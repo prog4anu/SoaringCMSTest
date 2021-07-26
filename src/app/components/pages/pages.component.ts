@@ -27,6 +27,8 @@ export class PagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+
+      console.log(params)
       this.param = params["pages"];
       
       if (this.param === undefined) {

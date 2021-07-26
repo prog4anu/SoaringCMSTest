@@ -25,6 +25,7 @@ export class AdminEditPageComponent implements OnInit {
   sidebar: boolean = false;
   slug: string = '';
   param: any;
+  pagelink:string='';
 
   constructor(
     private router: Router,
@@ -50,6 +51,7 @@ export class AdminEditPageComponent implements OnInit {
         this.metaTitle = page['metaTitle'];
         this.description = page['description'];
         this.keywords = page['keywords'];
+        this.pagelink = page['pageLink'];
         if(page['hasSideBar']===true){
           this.sidebar=true;
         }
