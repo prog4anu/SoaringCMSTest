@@ -24,6 +24,7 @@ export class AdminAddPageComponent implements OnInit {
   description:string = "";
   keywords:string = "";
   content:string = "";
+  pagelink:string = "";
 
   constructor(
     private router:Router,
@@ -38,9 +39,12 @@ export class AdminAddPageComponent implements OnInit {
       this.router.navigateByUrl('');
     } else{
       CKEDITOR.replace('Content');
+var editor =CKEDITOR.replace('Content');
+
+      CKFinder.setupCKEditor(editor);
     }
 
-    console.log(CKFinder);
+    
   }
 
   addPage({form,value,valid}:any){
