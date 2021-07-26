@@ -9,7 +9,7 @@
 <div class="container col-lg-4">
     <form novalidate #f="ngForm" (ngSubmit)="register(f)">
         <div class="group">
-            <input type="text" name="username" [(ngModel)]="username" #userName="ngModel" minlength="3" required>
+            <input type="text" name="username" (focusout)="focusOutFunction(username)" [(ngModel)]="username" #userName="ngModel" minlength="3" required>
             <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>UserName</label>
