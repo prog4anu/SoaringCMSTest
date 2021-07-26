@@ -57,6 +57,8 @@ export class AdminEditPageComponent implements OnInit {
         }
         CKEDITOR.fullPage = true;
         CKEDITOR.allowedContent = true;
+
+        CKEDITOR.config.allowedContent = true;
         
       //   CKEDITOR.replace( 'wysiwyg5', {
       //     allowedContent: {

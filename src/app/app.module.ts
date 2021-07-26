@@ -44,7 +44,8 @@ const appRoutes: Routes = [
   { path: 'admin/sidebar', component: AdminSidebarComponent },
   { path: 'admin/upload-logo', component: UploadlogoComponent },
   { path: '', component: PagesComponent },
-  { path: ':pages', component: PagesComponent }
+  { path: ':pages', component: PagesComponent },
+  { path: ':pages/:pages', component: PagesComponent }
 
 ]
 
