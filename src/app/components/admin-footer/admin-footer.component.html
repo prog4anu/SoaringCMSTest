@@ -1,0 +1,24 @@
+<div class="success-text" *ngIf="successMessage">
+    <p>Footer Edited Successfully</p>
+</div>
+
+<div class="container col-12 mb-3 mt-3">
+    <h2 class="page-title text-center">Edit Footer</h2>
+    <a class="p-0" routerLink="/admin/pages">&#x2190; Go to all pages</a>
+</div>
+
+<form novalidate #f="ngForm" (ngSubmit)="editSideBar(f)">    
+    <div class="form-group">
+        <label for="">Set Background</label>
+        <input name="BgColor" class="form-control col-md-12 col-lg-3"  [(ngModel)]="color" placeholder="Select color or enter code" [(colorPicker)]="color" [style.background]="color"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Content</label>
+        <textarea name="Content" id="" cols="30" rows="10" class="form-control" placeholder="Content" [(ngModel)]="content"></textarea>
+    </div>
+    <input type="hidden" name="footerId" [(ngModel)]="footerId"/>
+    <div class="form-group">
+        <button class="btn btn-default btn-custom" [disabled]="!f.valid">Edit Footer</button>
+    </div>
+</form>

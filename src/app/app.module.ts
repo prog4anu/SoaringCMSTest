@@ -27,6 +27,8 @@ import { AdminAddsubmenuComponent } from './components/admin-addsubmenu/admin-ad
 import { SubmenuNavComponent } from './components/submenu-nav/submenu-nav.component';
 import { AdminEditmenuComponent } from './components/admin-editmenu/admin-editmenu.component';
 import { AdminEditsubmenuComponent } from './components/admin-editsubmenu/admin-editsubmenu.component';
+import { AdminFooterComponent } from './components/admin-footer/admin-footer.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -42,6 +44,7 @@ const appRoutes: Routes = [
   { path: 'admin/editsubmenu/:menuId/:submenuId', component: AdminEditsubmenuComponent },
   { path: 'admin/editpage/:PageId', component: AdminEditPageComponent },
   { path: 'admin/sidebar', component: AdminSidebarComponent },
+  { path: 'admin/footer', component: AdminFooterComponent },
   { path: 'admin/upload-logo', component: UploadlogoComponent },
   { path: '', component: PagesComponent },
   { path: ':pages', component: PagesComponent },
@@ -69,7 +72,8 @@ const appRoutes: Routes = [
     AdminAddsubmenuComponent,
     SubmenuNavComponent,
     AdminEditmenuComponent,
-    AdminEditsubmenuComponent
+    AdminEditsubmenuComponent,
+    AdminFooterComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +81,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ColorPickerModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

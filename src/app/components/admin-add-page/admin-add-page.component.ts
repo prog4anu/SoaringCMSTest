@@ -39,7 +39,7 @@ export class AdminAddPageComponent implements OnInit {
       this.router.navigateByUrl('');
     } else{
       CKEDITOR.replace('Content');
-var editor =CKEDITOR.replace('Content');
+      var editor =CKEDITOR.replace('Content');
 
       CKFinder.setupCKEditor(editor);
     }

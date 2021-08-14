@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   get getFront(){
-    if(localStorage.getItem("user")==="\"admin\""){
+    if(localStorage.getItem("user")?.toLowerCase()==="\"admin\""){
       return false;
     }
     return true;
