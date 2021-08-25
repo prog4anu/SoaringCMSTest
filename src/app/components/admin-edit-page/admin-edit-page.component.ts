@@ -60,6 +60,7 @@ export class AdminEditPageComponent implements OnInit {
         // CKEDITOR.config.extraAllowedContent= '*[id]';
       CKEDITOR.config.allowedContent = true;
       CKEDITOR.config.extraAllowedContent = '*(*)[id]';
+      CKEDITOR.config.protectedSource.push(/<i[^>]*><\/i>/g);
         
       //   CKEDITOR.replace( 'wysiwyg5', {
       //     allowedContent: {
