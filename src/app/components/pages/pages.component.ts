@@ -1,8 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageService } from 'src/app/services/page.service';
 import { SidebarService } from 'src/app/services/sidebar.service';
+
+@Pipe({ name: 'safeHtml'})
+
+export class SafeHtmlPipe implements PipeTransform  {
+  constructor(private sanitized: DomSanitizer) {}
+  transform(value:any) {
+    return this.sanitized.bypassSecurityTrustHtml(value);
+  }
+}
 
 @Component({
   selector: 'app-pages',

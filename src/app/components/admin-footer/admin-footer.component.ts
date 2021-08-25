@@ -35,9 +35,10 @@ export class AdminFooterComponent implements OnInit {
       }
      
       CKEDITOR.fullPage = true;
-      CKEDITOR.allowedContent = true;
-
+      //CKEDITOR.allowedContent = true;
+      // CKEDITOR.config.extraAllowedContent= '*[id]';
       CKEDITOR.config.allowedContent = true;
+      CKEDITOR.config.extraAllowedContent = '*(*)[id]';
       CKEDITOR.replace('Content');
     });
   }

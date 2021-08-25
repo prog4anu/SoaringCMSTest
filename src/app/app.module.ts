@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { FooterComponent, SafeHtmlPipe } from './components/footer/footer.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { AdminPagesComponent } from './components/admin-pages/admin-pages.component';
 import { AdminAddPageComponent } from './components/admin-add-page/admin-add-page.component';
@@ -54,6 +54,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    SafeHtmlPipe,
     AppComponent,
     NavbarComponent,
     FooterComponent,

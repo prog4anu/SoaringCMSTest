@@ -56,9 +56,10 @@ export class AdminEditPageComponent implements OnInit {
           this.sidebar=true;
         }
         CKEDITOR.fullPage = true;
-        CKEDITOR.allowedContent = true;
-
-        CKEDITOR.config.allowedContent = true;
+             //CKEDITOR.allowedContent = true;
+        // CKEDITOR.config.extraAllowedContent= '*[id]';
+      CKEDITOR.config.allowedContent = true;
+      CKEDITOR.config.extraAllowedContent = '*(*)[id]';
         
       //   CKEDITOR.replace( 'wysiwyg5', {
       //     allowedContent: {

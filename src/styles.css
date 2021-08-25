@@ -142,3 +142,10 @@ video {
 }
 
 
+.hero{
+ position: relative !important;   
+}
+
+.testimonials::before{
+    position: inherit !important;
+}
