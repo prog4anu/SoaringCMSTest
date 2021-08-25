@@ -32,6 +32,12 @@
     padding: 0.5em 1em;
 }
 
+.nav-scrolled{
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+}
+
 @media screen and (min-width: 992px) {
     .navbar-nav li{
         padding-right: 3em;

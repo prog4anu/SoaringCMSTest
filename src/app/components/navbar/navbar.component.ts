@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
 import { PageService } from 'src/app/services/page.service';
 
@@ -25,7 +26,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public pageService: PageService,
-    public menuService: MenuService
+    public menuService: MenuService,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,18 @@ export class NavbarComponent implements OnInit {
         );        
       }
     });
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    var element = document.getElementsByTagName("nav")[0];
+    if (document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20) {
+        element.classList.add("nav-scrolled");
+    }
+    else{
+      element.classList.remove("nav-scrolled");
+    }
   }
 
   checkObj(obj:any){
